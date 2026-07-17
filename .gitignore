@@ -1,0 +1,28 @@
+﻿# Dependencies
+node_modules/
+
+# Environment Variables
+.env
+.env.*
+server/.env
+client/.env
+
+# Build
+dist/
+build/
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+
+# Cache
+.cache/

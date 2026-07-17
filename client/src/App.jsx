@@ -10,6 +10,7 @@ import Decode from "./pages/Decode";
 import StorageHistory from "./pages/StorageHistory";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
+import Upload from "./pages/Upload";
 import DNAReport from "./pages/DNAReport";
 
 // Protected Route
@@ -18,6 +19,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <Routes>
+
       {/* Public Routes */}
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
@@ -25,6 +27,7 @@ function App() {
       <Route path="/register" element={<Register />} />
 
       {/* Protected Routes */}
+
       <Route
         path="/dashboard"
         element={
@@ -53,6 +56,15 @@ function App() {
       />
 
       <Route
+        path="/upload"
+        element={
+          <ProtectedRoute>
+            <Upload />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
         path="/history"
         element={
           <ProtectedRoute>
@@ -60,7 +72,16 @@ function App() {
           </ProtectedRoute>
         }
       />
-      
+
+      <Route
+        path="/report/:id"
+        element={
+          <ProtectedRoute>
+            <DNAReport />
+          </ProtectedRoute>
+        }
+      />
+
       <Route
         path="/profile"
         element={
@@ -69,9 +90,9 @@ function App() {
           </ProtectedRoute>
         }
       />
+
     </Routes>
   );
-  
 }
 
 export default App;

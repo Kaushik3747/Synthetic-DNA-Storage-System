@@ -2,13 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../services/api";
 import CircularProgress from "../components/CircularProgress";
-import DNAChart from "../components/DNAChart";
-
-<div className="mt-10">
-
-<DNAChart/>
-
-</div>
 
 export default function Dashboard() {
   const [stats, setStats] = useState({
@@ -25,7 +18,15 @@ export default function Dashboard() {
   const fetchStats = async () => {
     try {
       const res = await API.get("/dna/stats");
-      setStats(res.data.stats);
+
+      setStats(
+        res.data.stats || {
+          totalRecords: 0,
+          totalDNABases: 0,
+          totalBinaryBits: 0,
+          latestUpload: null,
+        }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -58,81 +59,110 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white p-8">
-      <h1 className="text-5xl font-bold text-cyan-400 mb-8">
+
+      <h1 className="text-5xl font-bold text-cyan-400 mb-10">
         🧬 Synthetic DNA Storage Dashboard
       </h1>
 
-      <div className="grid md:grid-cols-4 gap-6">
+      {/* Statistics Cards */}
+
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
+
         {cards.map((card) => (
           <div
             key={card.title}
-            className={`bg-slate-900 rounded-xl border-2 ${card.color} p-6`}
+            className={`bg-slate-900 border-2 ${card.color} rounded-xl p-6 hover:scale-105 transition`}
           >
-            <p className="text-gray-400">{card.title}</p>
+            <p className="text-gray-400">
+              {card.title}
+            </p>
 
-            <h2 className="text-4xl font-bold mt-4">
+            <h2 className="text-4xl font-bold mt-3">
               {card.value}
             </h2>
           </div>
         ))}
+
       </div>
 
-      <h2 className="text-3xl font-bold mt-10 mb-5">
+      {/* DNA Analytics */}
+
+      <h2 className="text-3xl font-bold mt-12 mb-6">
+        DNA Analytics
+      </h2>
+
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
+
+        <CircularProgress
+          title="GC Content"
+          value={52}
+        />
+
+        <CircularProgress
+          title="AT Content"
+          value={48}
+          color="#22c55e"
+        />
+
+        <CircularProgress
+          title="Compression"
+          value={90}
+          color="#eab308"
+        />
+
+        <CircularProgress
+          title="DNA Health"
+          value={100}
+          color="#ef4444"
+        />
+
+      </div>
+
+      {/* Quick Actions */}
+
+      <h2 className="text-3xl font-bold mt-12 mb-6">
         Quick Actions
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid lg:grid-cols-2 gap-6">
 
         <Link
           to="/encode"
-          className="bg-cyan-500 hover:bg-cyan-600 rounded-xl p-8 text-center text-2xl font-bold"
+          className="bg-cyan-500 hover:bg-cyan-600 rounded-xl p-8 text-center text-2xl font-bold transition"
         >
           🧬 Encode DNA
         </Link>
 
         <Link
           to="/decode"
-          className="bg-green-500 hover:bg-green-600 rounded-xl p-8 text-center text-2xl font-bold"
+          className="bg-green-500 hover:bg-green-600 rounded-xl p-8 text-center text-2xl font-bold transition"
         >
           🔬 Decode DNA
         </Link>
 
         <Link
+          to="/upload"
+          className="bg-indigo-500 hover:bg-indigo-600 rounded-xl p-8 text-center text-2xl font-bold transition"
+        >
+          📁 Upload File
+        </Link>
+
+        <Link
           to="/history"
-          className="bg-purple-500 hover:bg-purple-600 rounded-xl p-8 text-center text-2xl font-bold"
+          className="bg-purple-500 hover:bg-purple-600 rounded-xl p-8 text-center text-2xl font-bold transition"
         >
           📜 Storage History
         </Link>
 
         <Link
           to="/profile"
-          className="bg-orange-500 hover:bg-orange-600 rounded-xl p-8 text-center text-2xl font-bold"
+          className="bg-orange-500 hover:bg-orange-600 rounded-xl p-8 text-center text-2xl font-bold transition lg:col-span-2"
         >
           👤 Profile
         </Link>
 
       </div>
+
     </div>
   );
 }
-<div className="grid md:grid-cols-4 gap-6 mt-10">
-  <CircularProgress title="GC Content" value={52} />
-
-  <CircularProgress
-    title="AT Content"
-    value={48}
-    color="#22c55e"
-  />
-
-  <CircularProgress
-    title="Compression"
-    value={90}
-    color="#eab308"
-  />
-
-  <CircularProgress
-    title="DNA Health"
-    value={100}
-    color="#ef4444"
-  />
-</div>

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { MdUploadFile } from "react-icons/md";
 
 import {
 MdDashboard,
@@ -46,6 +47,14 @@ Encode
 <NavLink to="/decode">
 
 <FaDna/>
+
+<NavLink
+to="/upload"
+className="flex items-center gap-3 hover:text-cyan-400"
+>
+<MdUploadFile size={22}/>
+Upload
+</NavLink>
 
 Decode
 
