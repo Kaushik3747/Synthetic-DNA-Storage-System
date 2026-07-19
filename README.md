@@ -30,7 +30,7 @@ The **Synthetic DNA Storage System** is a full-stack web application that demons
 
 The application converts text into **Binary**, maps the binary data into **DNA nucleotides (A, T, C, G)**, securely stores the generated DNA sequence in MongoDB, and allows users to decode it back to its original text.
 
-This project combines concepts from **Bioinformatics**, **DNA Data Storage**, and **Full-Stack Web Development**.
+
 
 ---
 
@@ -388,7 +388,5 @@ This project is licensed under the **MIT License**.
 
 <div align="center">
 
-### ⭐ If you found this project useful, consider giving it a Star!
 
-**Thank you for visiting this repository. Happy Coding! 🚀**
 
