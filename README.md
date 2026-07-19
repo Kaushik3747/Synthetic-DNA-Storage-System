@@ -318,19 +318,31 @@ JWT_SECRET=YOUR_SECRET_KEY
 
 # 📸 Application Screenshots
 
-| Module | Screenshot |
-|---------|------------|
-| 🔐 Login | `docs/login.png` |
-| 🏠 Dashboard | `docs/dashboard.png` |
-| 🧬 Encode | `docs/encode.png` |
-| 🔬 Decode | `docs/decode.png` |
-| 📁 Upload | `docs/upload.png` |
-| 📜 History | `docs/history.png` |
-| 👤 Profile | `docs/profile.png` |
+## 🔐 Login
 
-> Replace these placeholders with actual screenshots from your application.
+![Login](docs/login.png)
 
 ---
+
+## 📝 Register
+
+![Register](docs/register.png)
+
+---
+
+
+## 🧬 Encode
+
+![Encode](docs/encode.png)
+
+---
+
+## 🔬 Decode
+
+![Decode](docs/decode.png)
+
+---
+
 
 # 🎯 Learning Outcomes
 
